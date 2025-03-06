@@ -10,8 +10,8 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.AnalogInput;
 import java.io.File;
 import edu.wpi.first.wpilibj.Filesystem;
-import swervelib.parser.SwerveParser;
-import swervelib.SwerveDrive;
+// import swervelib.parser.SwerveParser;
+// import swervelib.SwerveDrive;
 import edu.wpi.first.math.util.Units;
 import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkMax;
@@ -23,7 +23,7 @@ import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.RelativeEncoder;
 import com.ctre.phoenix.*;
 import com.ctre.phoenix6.hardware.CANcoder;
-import swervelib.encoders.CANCoderSwerve;
+// import swervelib.encoders.CANCoderSwerve;
 import frc.robot.Configs;
 
 
@@ -34,7 +34,7 @@ public class MAXSwerveModule {
   private final RelativeEncoder m_drivingEncoder;
   private final AbsoluteEncoder m_turningEncoder;
  
-  private final CANCoderSwerve m_absoluteEncoder;
+  private final CANcoder m_absoluteEncoder;
   private final boolean absoluteEncoderReversed;
   private final double absoluteEncoderOffsetRad;
 
@@ -57,7 +57,7 @@ public class MAXSwerveModule {
 
     this.absoluteEncoderOffsetRad = absoluteEncoderOffset;
     this.absoluteEncoderReversed = absoluteEncoderReversed;
-    m_absoluteEncoder = new CANCoderSwerve(AbsoluteCanID, "else");
+    m_absoluteEncoder = new CANcoder(AbsoluteCanID, "else");
   
 
     m_drivingEncoder = m_drivingMotor.getEncoder();

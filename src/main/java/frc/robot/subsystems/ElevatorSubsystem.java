@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.ElevatorConstants;
-import swervelib.encoders.SparkMaxEncoderSwerve;
+// import swervelib.encoders.SparkMaxEncoderSwerve;
 
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.sim.SparkAbsoluteEncoderSim;
