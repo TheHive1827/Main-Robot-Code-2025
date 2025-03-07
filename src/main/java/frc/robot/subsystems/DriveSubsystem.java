@@ -37,25 +37,25 @@ public class DriveSubsystem extends SubsystemBase {
       );
 
   private final MAXSwerveModule m_frontRight = new MAXSwerveModule(
-    DriveConstants.kFrontLeftDrivingCanId,
-    DriveConstants.kFrontLeftTurningCanId,
-    DriveConstants.kAbsoluteCanIDFrontLeft,
+    DriveConstants.kFrontRightDrivingCanId,
+    DriveConstants.kFrontRightTurningCanId,
+    DriveConstants.kAbsoluteCanIDFrontRight,
     DriveConstants.kAbsoluteEncoderOffset,
     DriveConstants.kAbsoluteEncoderReversed,
     DriveConstants.kFrontRightChassisAngularOffset);
 
   private final MAXSwerveModule m_rearLeft = new MAXSwerveModule(
-    DriveConstants.kFrontLeftDrivingCanId,
-    DriveConstants.kFrontLeftTurningCanId, 
-    DriveConstants.kAbsoluteCanIDFrontLeft,
+    DriveConstants.kRearLeftDrivingCanId,
+    DriveConstants.kRearLeftTurningCanId, 
+    DriveConstants.kAbsoluteCanIDBackLeft,
     DriveConstants.kAbsoluteEncoderOffset,
     DriveConstants.kAbsoluteEncoderReversed,
     DriveConstants.kBackLeftChassisAngularOffset);
 
   private final MAXSwerveModule m_rearRight = new MAXSwerveModule(
-    DriveConstants.kFrontLeftDrivingCanId,
-    DriveConstants.kFrontLeftTurningCanId,
-    DriveConstants.kAbsoluteCanIDFrontLeft,
+    DriveConstants.kRearRightDrivingCanId,
+    DriveConstants.kRearRightTurningCanId,
+    DriveConstants.kAbsoluteCanIDBackRight,
     DriveConstants.kAbsoluteEncoderOffset,
     DriveConstants.kAbsoluteEncoderReversed,
     DriveConstants.kBackRightChassisAngularOffset);

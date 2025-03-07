@@ -2,9 +2,16 @@ package frc.robot.commands;
 import frc.robot.Configs;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
+import frc.robot.Configs;
+import frc.robot.Configs.MAXSwerveModule;
+import frc.robot.Constants.AutoConstants;
+import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
+import edu.wpi.first.math.filter.SlewRateLimiter;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
@@ -53,12 +60,16 @@ public abstract class SwerveStick extends Command {
                 spdX, spdY, turningSPD, swerveStick.geRotation2d()
             );
         }
+        else {
+            chassisSpeeds = new ChassisSpeeds(spdX, spdY, turningSPD);
+        }
         SwerveModuleState[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds); 
+        swerveStick.setModuleStates(moduleStates);
      } //@TODO: RETURN TO THIS
 
     @Override
     public void end(boolean interrupted) {
-        swerveStick.setMotor(0);
+        swerveStick.stopModule();
         System.out.println("ElevatorJoystickCmd ended!");
     } //@TODO: THIS TOO!
 

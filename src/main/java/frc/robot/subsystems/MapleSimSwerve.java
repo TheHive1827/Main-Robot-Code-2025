@@ -19,7 +19,7 @@
 // import org.ironmaple.simulation.drivesims.configs.DriveTrainSimulationConfig;
 // import org.ironmaple.simulation.drivesims.configs.SwerveModuleSimulationConfig;
 
-// public class MapleSimSwerve implements SwerveDrive {
+// public class MapleSimSwerve implements DriveSubsystem {
 //     private final SelfControlledSwerveDriveSimulation simulatedDrive;
 //     private final Field2d field2d;
 
