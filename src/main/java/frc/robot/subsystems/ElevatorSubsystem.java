@@ -29,7 +29,7 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 
 public class ElevatorSubsystem extends SubsystemBase {
-  CommandXboxController ElevatorController = new CommandXboxController(0)
+  CommandXboxController ElevatorController = new CommandXboxController(0);
   XboxController exampleXbox = new XboxController(0); // 0 is the USB Port to be used as indicated on the Driver Station
   private final SparkMax elevatorMotorLeader = new SparkMax(ElevatorConstants.ElevatorLeader, MotorType.kBrushless);
   private final SparkMax elevatorMotorFollower = new SparkMax(ElevatorConstants.ElevatorFollower, MotorType.kBrushless);
