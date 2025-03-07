@@ -46,7 +46,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   private final MAXSwerveModule m_rearLeft = new MAXSwerveModule(
     DriveConstants.kFrontLeftDrivingCanId,
-    DriveConstants.kFrontLeftTurningCanId,
+    DriveConstants.kFrontLeftTurningCanId, 
     DriveConstants.kAbsoluteCanIDFrontLeft,
     DriveConstants.kAbsoluteEncoderOffset,
     DriveConstants.kAbsoluteEncoderReversed,
