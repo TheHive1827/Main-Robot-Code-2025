@@ -4,9 +4,14 @@
 
 package frc.robot;
 
+import static edu.wpi.first.units.Units.Inches;
+
 import org.ironmaple.simulation.SimulatedArena;
 import org.ironmaple.simulation.drivesims.COTS;
-import org.ironmaple.simulation.drivesims.configs.DriveTrainSimulationConfig;
+
+// import org.ironmaple.simulation.SimulatedArena;
+// import org.ironmaple.simulation.drivesims.COTS;
+// import org.ironmaple.simulation.drivesims.configs.DriveTrainSimulationConfig;
 
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -105,20 +110,19 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {}
 
-//   SimulatedArena.getInstance();
+  // @Override
+  // public void simulationPeriod(){
+  //   SimulatedArena.getInstance().simulationPeriodic();
+  // }
 
-//   // Create and configure a drivetrain simulation configuration
+// //   // Create and configure a drivetrain simulation configuration
 // final DriveTrainSimulationConfig driveTrainSimulationConfig = DriveTrainSimulationConfig.Default()
-//         // Specify gyro type (for realistic gyro drifting and error simulation)
-//         .withGyro(COTS.ofPigeon2())
-//         // Specify swerve module (for realistic swerve dynamics)
-//         .withSwerveModule(COTS.ofMark4(
-//                 DCMotor.getKrakenX60(1), // Drive motor is a Kraken X60
-//                 DCMotor.getFalcon500(1), // Steer motor is a Falcon 500
-//                 COTS.WHEELS.COLSONS.cof, // Use the COF for Colson Wheels
-//                 3)) // L3 Gear ratio
-//         // Configures the track length and track width (spacing between swerve modules)
-//         .withTrackLengthTrackWidth(Inches.of(24), Inches.of(24))
-//         // Configures the bumper size (dimensions of the robot bumper)
-//         .withBumperSize(Inches.of(30), Inches.of(30));
+// .withGyro(COTS.ofNav2X()) // Specify gyro type (for realistic gyro drifting and error simulation)
+// .withSwerveModule(COTS.ofMark4( // Specify swerve module (for realistic swerve dynamics)
+//  DCMotor.getNEO(4), // Drive motor is a Kraken X60
+// DCMotor.getNEO(4), // Steer motor is a Falcon 500
+//  COTS.WHEELS.COLSONS.cof, // Use the COF for Colson Wheels
+//  3)) // L3 Gear ratio
+// .withTrackLengthTrackWidth(Inches.of(24), Inches.of(24)) //         // Configures the track length and track width (spacing between swerve modules)
+// .withBumperSize(Inches.of(30), Inches.of(30)); //         // Configures the bumper size (dimensions of the robot bumper)
 }
