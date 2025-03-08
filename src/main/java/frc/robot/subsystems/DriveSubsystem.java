@@ -160,6 +160,7 @@ public class DriveSubsystem extends SubsystemBase {
     m_frontRight.setDesiredState(swerveModuleStates[1]);
     m_rearLeft.setDesiredState(swerveModuleStates[2]);
     m_rearRight.setDesiredState(swerveModuleStates[3]);
+    SmartDashboard.putNumber(getName(), rotDelivered);
   }
 
   /**
@@ -198,8 +199,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   private SwerveModuleState[] getModuleStates() {
-    return new SwerveModuleState[] {
-            m_frontLeft.getState(),
+    return new SwerveModuleState[] {            m_frontLeft.getState(),
             m_frontRight.getState(),
             m_rearLeft.getState(),
             m_rearRight.getState()
