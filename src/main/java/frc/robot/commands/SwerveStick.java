@@ -62,7 +62,7 @@ public abstract class SwerveStick extends Command {
         else {
             chassisSpeeds = new ChassisSpeeds(spdX, spdY, turningSPD);
         }
-        SwerveModuleState[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds);
+        SwerveModuleState[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds); 
         swerveStick.setModuleStates(moduleStates);
      } //@TODO: RETURN TO THIS
 

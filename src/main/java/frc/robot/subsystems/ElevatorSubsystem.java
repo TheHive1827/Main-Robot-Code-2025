@@ -1,11 +1,13 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.ElevatorConstants;
 // import swervelib.encoders.SparkMaxEncoderSwerve;
+import frc.robot.Constants.OIConstants;
 
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.sim.SparkAbsoluteEncoderSim;
@@ -20,11 +22,14 @@ import com.revrobotics.*;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 
 public class ElevatorSubsystem extends SubsystemBase {
+  CommandXboxController ElevatorController = new CommandXboxController(0);
   XboxController exampleXbox = new XboxController(0); // 0 is the USB Port to be used as indicated on the Driver Station
   private final SparkMax elevatorMotorLeader = new SparkMax(ElevatorConstants.ElevatorLeader, MotorType.kBrushless);
   private final SparkMax elevatorMotorFollower = new SparkMax(ElevatorConstants.ElevatorFollower, MotorType.kBrushless);
@@ -67,11 +72,26 @@ public class ElevatorSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run during simulation
   }
 
-
   private void schedule(Command command) {
     
   }
 
+  public Command ElevatorUpper() {
+    return runOnce(() -> elevatorMotorLeader.set(1))
+        .andThen(run(() ->elevatorMotorLeader.set(1)));
+  }
+
+  public Command ElevatorDowner() {
+    return runOnce(() -> elevatorMotorLeader.set(-1))
+        .andThen(run(() ->elevatorMotorLeader.set(-1)));
+  }
+
+  public void configureBindings() {
+    // Deploy the intake with the X button
+    ElevatorController.y().whileTrue(ElevatorUpper());
+    // Retract the intake with the Y button
+    ElevatorController.y().whileTrue(ElevatorUpper());
+  }
 
 
 
@@ -99,9 +119,5 @@ public class ElevatorSubsystem extends SubsystemBase {
 //   }
 // }
 
-public void setMotor(double Speed){
-  elevatorMotorLeader.set(Speed);
-  elevatorMotorFollower.set(Speed);
-}
 
 }
