@@ -88,9 +88,9 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   public void configureBindings() {
     // Deploy the intake with the X button
-    ElevatorController.y().onTrue(ElevatorUpper());
+    ElevatorController.y().whileTrue(ElevatorUpper());
     // Retract the intake with the Y button
-    ElevatorController.y().whileFalse(ElevatorUpper());
+    ElevatorController.y().whileTrue(ElevatorUpper());
   }
 
 
