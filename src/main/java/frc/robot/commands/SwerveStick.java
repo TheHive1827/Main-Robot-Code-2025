@@ -47,7 +47,6 @@ public abstract class SwerveStick extends Command {
 
     @Override
     public void execute() {
-
         double spdX = speedX.get();
         double spdY = speedY.get();
         double turningSPD = turningSpeedFunction.get();
