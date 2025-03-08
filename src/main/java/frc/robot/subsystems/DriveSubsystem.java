@@ -11,9 +11,11 @@ import com.studica.frc.AHRS;
 import com.studica.frc.AHRS.NavXComType;
 
 import edu.wpi.first.hal.HAL;
+import edu.wpi.first.math.controller.HolonomicDriveController;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.math.kinematics.Kinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
@@ -24,6 +26,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.SPI;
 import frc.robot.Constants.DriveConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.commands.SwerveStick;
 
 public class DriveSubsystem extends SubsystemBase {
   // Create MAXSwerveModules
@@ -84,7 +87,7 @@ public class DriveSubsystem extends SubsystemBase {
         }
       }).start();
     // Usage reporting for MAXSwerve template
-    HAL.report(tResourceType.kResourceType_RobotDrive, tInstances.kRobotDriveSwerve_MaxSwerve);
+    HAL.report(tResourceType.kResourceType_RobotDrive, tInstances.kRobotDriveSwerve_MaxSwerve); 
   }
 
   @Override
@@ -109,6 +112,10 @@ public class DriveSubsystem extends SubsystemBase {
   public Pose2d getPose() {
     return m_odometry.getPoseMeters();
   }
+
+  // public ChassisSpeeds getRobotRelativeSpeeds(){
+  //   return DriveConstants.kDriveKinematics.toChassisSpeeds(());
+  // }
 
   /**
    * Resets the odometry to the specified pose.
@@ -179,6 +186,10 @@ public class DriveSubsystem extends SubsystemBase {
     m_rearRight.setDesiredState(desiredStates[3]);
   }
 
+  public ChassisSpeeds getChassisSpeeds(){
+    return DriveConstants.kDriveKinematics.toChassisSpeeds();
+  }
+
   public void stopModule(){
     m_frontLeft.stop();
     m_frontRight.stop();
@@ -186,6 +197,14 @@ public class DriveSubsystem extends SubsystemBase {
     m_rearRight.stop();
   }
 
+  private SwerveModuleState[] getModuleStates() {
+    return new SwerveModuleState[] {
+            m_frontLeft.getState(),
+            m_frontRight.getState(),
+            m_rearLeft.getState(),
+            m_rearRight.getState()
+    };
+  }
   
 
   /** Resets the drive encoders to currently read a position of 0. */
