@@ -12,11 +12,14 @@ import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.Command;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.function.Supplier;
 
 public abstract class SwerveStick extends Command {
@@ -64,7 +67,16 @@ public abstract class SwerveStick extends Command {
         }
         SwerveModuleState[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds); 
         swerveStick.setModuleStates(moduleStates);
-     } //@TODO: RETURN TO THIS
+
+    System.out.println("Speed X: " + spdX);
+    SmartDashboard.putNumber("Speed Y: ", spdY);
+    System.out.println("Speed Y: " + spdY);
+    SmartDashboard.putNumber("Turning Speed: ", turningSPD);
+    System.out.println("Turning Speed: " + turningSPD);
+    System.out.println("Chassis Speeds: " + chassisSpeeds);
+    SmartDashboard.putString("Module states: ", Arrays.toString(moduleStates));
+    System.out.println("Module States: " + Arrays.toString(moduleStates));    
+ } //@TODO: RETURN TO THIS
 
     @Override
     public void end(boolean interrupted) {
