@@ -140,6 +140,11 @@ public class MAXSwerveModule {
     m_turningClosedLoopController.setReference(correctedDesiredState.angle.getRadians(), ControlType.kPosition);
 
     m_desiredState = desiredState;
+
+    System.out.println("Desired State: " + desiredState);
+    System.out.println("Corrected Desired State: " + correctedDesiredState);
+    System.out.println("Driving Encoder Position: " + m_drivingEncoder.getPosition());
+    System.out.println("Turning Encoder Position: " + m_turningEncoder.getPosition());
   }
   
   /** Zeroes all the SwerveModule encoders. */
