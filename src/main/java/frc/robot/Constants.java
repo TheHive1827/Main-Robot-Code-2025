@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.config.PIDConstants;
+
 import com.revrobotics.spark.SparkMax;
 
 import edu.wpi.first.math.geometry.Translation2d;
@@ -68,6 +70,9 @@ public final class Constants {
     public static final boolean kAbsoluteEncoderReversed = false;
 
     public static final boolean kGyroReversed = false;
+
+    public static final PIDConstants translationConstants = new PIDConstants(5.0, 0.0, 0.0 );
+    public static final PIDConstants rotationConstants = new PIDConstants(5.0, 0.0, 0.0);
   }
 
   public static final class ModuleConstants {
