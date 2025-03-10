@@ -7,6 +7,10 @@ package frc.robot.subsystems;
 import edu.wpi.first.hal.FRCNetComm.tInstances;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
 
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.config.RobotConfig;
+import com.pathplanner.lib.controllers.PPHolonomicDriveController;
+
 import java.util.Arrays;
 
 import com.studica.frc.AHRS;
@@ -24,8 +28,10 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.ADIS16470_IMU;
 import edu.wpi.first.wpilibj.ADIS16470_IMU.IMUAxis;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.SPI;
+import frc.robot.Constants;
 import frc.robot.Constants.DriveConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.commands.SwerveStick;
@@ -90,6 +96,37 @@ public class DriveSubsystem extends SubsystemBase {
       }).start();
     // Usage reporting for MAXSwerve template
     HAL.report(tResourceType.kResourceType_RobotDrive, tInstances.kRobotDriveSwerve_MaxSwerve); 
+
+    try {
+      RobotConfig config = RobotConfig.fromGUISettings();
+      
+      // Configure AutoBuilder
+      AutoBuilder.configure(
+          this::getPose, 
+          this::resetOdometry, 
+          this::getChassisSpeeds,
+          this::drive, 
+          new PPHolonomicDriveController(
+              Constants.DriveConstants.translationConstants,
+              Constants.DriveConstants.rotationConstants
+          ),
+          config,
+          () -> {
+              // Boolean supplier that controls when the path will be mirrored for the red alliance
+              // This will flip the path being followed to the red side of the field.
+              // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
+
+              var alliance = DriverStation.getAlliance();
+              if (alliance.isPresent()) {
+                  return alliance.get() == DriverStation.Alliance.Red;
+              }
+              return false;
+          },
+          this
+      );
+    } catch (Exception ex) {
+      DriverStation.reportError("Failed to load PathPlanner config and configure AutoBuilder", ex.getStackTrace());
+    }
   }
 
   @Override
@@ -165,7 +202,7 @@ public class DriveSubsystem extends SubsystemBase {
 
       System.out.println("Swerve Module States: " + Arrays.toString(swerveModuleStates));
   }
-
+  
   /**
    * Sets the wheels into an X formation to prevent movement.
    */
@@ -202,8 +239,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   private SwerveModuleState[] getModuleStates() {
-    return new SwerveModuleState[] {
-            m_frontLeft.getState(),
+    return new SwerveModuleState[] {            m_frontLeft.getState(),
             m_frontRight.getState(),
             m_rearLeft.getState(),
             m_rearRight.getState()

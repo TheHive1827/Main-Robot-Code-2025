@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.config.PIDConstants;
+
 import com.revrobotics.spark.SparkMax;
 
 import edu.wpi.first.math.geometry.Translation2d;
@@ -50,24 +52,27 @@ public final class Constants {
     public static final double kBackRightChassisAngularOffset = Math.PI / 2;
 
     // SPARK MAX CAN IDs
-    public static final int kFrontLeftDrivingCanId = 1;
-    public static final int kRearLeftDrivingCanId = 2;
-    public static final int kFrontRightDrivingCanId = 3;
-    public static final int kRearRightDrivingCanId = 4;
+    public static final int kFrontLeftDrivingCanId = 2;
+    public static final int kRearLeftDrivingCanId = 4;
+    public static final int kFrontRightDrivingCanId = 6;
+    public static final int kRearRightDrivingCanId = 8;
 
-    public static final int kFrontLeftTurningCanId = 5;
-    public static final int kRearLeftTurningCanId = 6;
-    public static final int kFrontRightTurningCanId = 7;
-    public static final int kRearRightTurningCanId = 8;
+    public static final int kFrontLeftTurningCanId = 1;
+    public static final int kRearLeftTurningCanId = 3;
+    public static final int kFrontRightTurningCanId = 5;
+    public static final int kRearRightTurningCanId = 7;
 
     public static final int kAbsoluteCanIDFrontLeft = 1;
     public static final int kAbsoluteCanIDFrontRight = 2;
     public static final int kAbsoluteCanIDBackLeft = 3;
     public static final int kAbsoluteCanIDBackRight = 4;
     public static final double kAbsoluteEncoderOffset = 0;
-    public static final boolean kAbsoluteEncoderReversed = false;
+    public static final boolean kAbsoluteEncoderReversed = true;
 
     public static final boolean kGyroReversed = false;
+
+    public static final PIDConstants translationConstants = new PIDConstants(5.0, 0.0, 0.0 );
+    public static final PIDConstants rotationConstants = new PIDConstants(5.0, 0.0, 0.0);
   }
 
   public static final class ModuleConstants {

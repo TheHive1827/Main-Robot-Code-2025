@@ -77,7 +77,6 @@ public class MAXSwerveModule {
     m_chassisAngularOffset = chassisAngularOffset;
     m_desiredState.angle = new Rotation2d(m_turningEncoder.getPosition());
     m_drivingEncoder.setPosition(0);
-
     resetEncoders();
   }
 
@@ -118,6 +117,7 @@ public class MAXSwerveModule {
     double angle = m_turningEncoder.getPosition();
     angle = 2 * Math.PI / 4096;
     angle -= absoluteEncoderOffsetRad;
+    System.out.println(angle);
     return angle * (absoluteEncoderReversed ? -1.0 : 1.0);
   }
 
