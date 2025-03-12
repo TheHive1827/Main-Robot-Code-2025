@@ -76,13 +76,13 @@ public abstract class SwerveStick extends Command {
     System.out.println("Chassis Speeds: " + chassisSpeeds);
     SmartDashboard.putString("Module states: ", Arrays.toString(moduleStates));
     System.out.println("Module States: " + Arrays.toString(moduleStates));    
- } //@TODO: RETURN TO THIS
+ } 
 
     @Override
     public void end(boolean interrupted) {
         swerveStick.stopModule();
         System.out.println("ElevatorJoystickCmd ended!");
-    } //@TODO: THIS TOO!
+    } 
 
     @Override
     public boolean isFinished() {

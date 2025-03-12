@@ -124,6 +124,7 @@ public class DriveSubsystem extends SubsystemBase {
           },
           this
       );
+  
     } catch (Exception ex) {
       DriverStation.reportError("Failed to load PathPlanner config and configure AutoBuilder", ex.getStackTrace());
     }
@@ -201,6 +202,10 @@ public class DriveSubsystem extends SubsystemBase {
     m_rearRight.setDesiredState(swerveModuleStates[3]);
 
       System.out.println("Swerve Module States: " + Arrays.toString(swerveModuleStates));
+      SmartDashboard.putNumber("Raw encoder absolute FLEFT", m_frontLeft.getAbsoluteEncoderRad());
+      SmartDashboard.putNumber("Raw encoder absolute FRIGHT", m_frontRight.getAbsoluteEncoderRad());
+      SmartDashboard.putNumber("Raw encoder absolute BLEFT", m_rearLeft.getAbsoluteEncoderRad());
+      SmartDashboard.putNumber("Raw encoder absolute BRIGHT", m_rearRight.getAbsoluteEncoderRad());
   }
   
   /**
