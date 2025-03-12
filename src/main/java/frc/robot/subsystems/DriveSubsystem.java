@@ -160,6 +160,8 @@ public class DriveSubsystem extends SubsystemBase {
     m_frontRight.setDesiredState(swerveModuleStates[1]);
     m_rearLeft.setDesiredState(swerveModuleStates[2]);
     m_rearRight.setDesiredState(swerveModuleStates[3]);
+    SmartDashboard.putNumber("XSPEED", xSpeed);
+    SmartDashboard.putNumber("YSPEED", ySpeed);
     SmartDashboard.putNumber(getName(), rotDelivered);
   }
 
