@@ -10,6 +10,7 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.AnalogInput;
 import java.io.File;
 import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // import swervelib.parser.SwerveParser;
 // import swervelib.SwerveDrive;
 import edu.wpi.first.math.util.Units;
@@ -57,7 +58,7 @@ public class MAXSwerveModule {
 
     this.absoluteEncoderOffsetRad = absoluteEncoderOffset;
     this.absoluteEncoderReversed = absoluteEncoderReversed;
-    m_absoluteEncoder = new CANcoder(AbsoluteCanID, "else");
+    m_absoluteEncoder = new CANcoder(AbsoluteCanID, "");
   
 
     m_drivingEncoder = m_drivingMotor.getEncoder();

@@ -206,6 +206,9 @@ public class DriveSubsystem extends SubsystemBase {
       SmartDashboard.putNumber("Raw encoder absolute FRIGHT", m_frontRight.getAbsoluteEncoderRad());
       SmartDashboard.putNumber("Raw encoder absolute BLEFT", m_rearLeft.getAbsoluteEncoderRad());
       SmartDashboard.putNumber("Raw encoder absolute BRIGHT", m_rearRight.getAbsoluteEncoderRad());
+    SmartDashboard.putNumber("XSPEED", xSpeed);
+    SmartDashboard.putNumber("YSPEED", ySpeed);
+    SmartDashboard.putNumber(getName(), rotDelivered);
   }
   
   /**
