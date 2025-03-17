@@ -35,9 +35,9 @@ public final class Constants {
     public static final double maximumSpeed = Units.feetToMeters(4.5);
 
     // Chassis configuration
-    public static final double kTrackWidth = Units.inchesToMeters(26.5);
+    public static final double kTrackWidth = Units.inchesToMeters(16.5);
     // Distance between centers of right and left wheels on robot
-    public static final double kWheelBase = Units.inchesToMeters(26.5);
+    public static final double kWheelBase = Units.inchesToMeters(16.5);
     // Distance between front and back wheels on robot
     public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
         new Translation2d(kWheelBase / 2, kTrackWidth / 2),
@@ -52,22 +52,22 @@ public final class Constants {
     public static final double kBackRightChassisAngularOffset = Math.PI / 2;
 
     // SPARK MAX CAN IDs
-    public static final int kFrontLeftDrivingCanId = 2;
-    public static final int kRearLeftDrivingCanId = 4;
-    public static final int kFrontRightDrivingCanId = 6;
-    public static final int kRearRightDrivingCanId = 8;
+    public static final int kFrontLeftDrivingCanId = 1;
+    public static final int kRearLeftDrivingCanId = 3;
+    public static final int kFrontRightDrivingCanId= 5;
+    public static final int kRearRightDrivingCanId = 7;
 
-    public static final int kFrontLeftTurningCanId = 1;
-    public static final int kRearLeftTurningCanId = 3;
-    public static final int kFrontRightTurningCanId = 5;
-    public static final int kRearRightTurningCanId = 7;
+    public static final int kFrontLeftTurningCanId = 2;
+    public static final int kRearLeftTurningCanId = 4;
+    public static final int kFrontRightTurningCanId = 6;
+    public static final int kRearRightTurningCanId = 8;
 
     public static final int kAbsoluteCanIDFrontLeft = 1;
     public static final int kAbsoluteCanIDFrontRight = 2;
     public static final int kAbsoluteCanIDBackLeft = 3;
     public static final int kAbsoluteCanIDBackRight = 4;
     public static final double kAbsoluteEncoderOffset = 0;
-    public static final boolean kAbsoluteEncoderReversed = true;
+    public static final boolean kAbsoluteEncoderReversed = false;
 
     public static final boolean kGyroReversed = false;
 
@@ -95,6 +95,7 @@ public final class Constants {
   public static final class ElevatorConstants{
     public static final int ElevatorLeader = 9;
     public static final int ElevatorFollower = 10;
+    public static final int armMotor = 11;
   }
 
   public static final class IntakeConstants{

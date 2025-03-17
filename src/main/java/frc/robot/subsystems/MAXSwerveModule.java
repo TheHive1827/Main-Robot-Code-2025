@@ -10,6 +10,7 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.AnalogInput;
 import java.io.File;
 import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // import swervelib.parser.SwerveParser;
 // import swervelib.SwerveDrive;
 import edu.wpi.first.math.util.Units;
@@ -57,7 +58,7 @@ public class MAXSwerveModule {
 
     this.absoluteEncoderOffsetRad = absoluteEncoderOffset;
     this.absoluteEncoderReversed = absoluteEncoderReversed;
-    m_absoluteEncoder = new CANcoder(AbsoluteCanID, "else");
+    m_absoluteEncoder = new CANcoder(AbsoluteCanID, "");
   
 
     m_drivingEncoder = m_drivingMotor.getEncoder();
@@ -77,6 +78,7 @@ public class MAXSwerveModule {
     m_chassisAngularOffset = chassisAngularOffset;
     m_desiredState.angle = new Rotation2d(m_turningEncoder.getPosition());
     m_drivingEncoder.setPosition(0);
+
     resetEncoders();
   }
 
@@ -117,7 +119,6 @@ public class MAXSwerveModule {
     double angle = m_turningEncoder.getPosition();
     angle = 2 * Math.PI / 4096;
     angle -= absoluteEncoderOffsetRad;
-    System.out.println(angle);
     return angle * (absoluteEncoderReversed ? -1.0 : 1.0);
   }
 
@@ -140,6 +141,11 @@ public class MAXSwerveModule {
     m_turningClosedLoopController.setReference(correctedDesiredState.angle.getRadians(), ControlType.kPosition);
 
     m_desiredState = desiredState;
+
+    System.out.println("Desired State: " + desiredState);
+    System.out.println("Corrected Desired State: " + correctedDesiredState);
+    System.out.println("Driving Encoder Position: " + m_drivingEncoder.getPosition());
+    System.out.println("Turning Encoder Position: " + m_turningEncoder.getPosition());
   }
   
   /** Zeroes all the SwerveModule encoders. */
