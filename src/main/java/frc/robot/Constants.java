@@ -97,8 +97,13 @@ public final class Constants {
     public static final int ElevatorFollower = 10;
   }
 
+  public static final class IntakeConstants{
+      public static final int IntakeMotorID = 9;
+  }
+  
   public static final class OIConstants {
     public static final int kDriverControllerPort = 0;
+    public static final int kElevatorControllerPort = 1;
     public static final double kDriveDeadband = 0.05;
   }
 
